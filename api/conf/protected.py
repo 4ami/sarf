@@ -1,0 +1,1 @@
+PROTECTED_ENDPOINTS:list[str]=['/expenses/add', '/expenses/range', '/user/budget']

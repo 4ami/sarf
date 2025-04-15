@@ -1,0 +1,27 @@
+[
+    {
+        "name": "resturant_category",
+        "stored_icon_path": "assets/icons/restaurant.png",
+        "is_good":false
+    },
+    {
+        "name": "travil_category",
+        "stored_icon_path": "assets/icons/travil.png",
+        "is_good":false
+    },
+    {
+        "name": "entertainment_category",
+        "stored_icon_path": "assets/icons/entertainment.png",
+        "is_good":false
+    },
+    {
+        "name": "transportation_category",
+        "stored_icon_path": "assets/icons/transportation.png",
+        "is_good":false
+    },
+    {
+        "name": "savings_category",
+        "stored_icon_path": "assets/icons/savings.png",
+        "is_good":true
+    }
+]
