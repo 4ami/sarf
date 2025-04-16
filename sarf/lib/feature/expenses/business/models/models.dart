@@ -7,3 +7,5 @@ part 'categories.dart';
 part 'categories_response.dart';
 part 'total_spending_response.dart';
 part 'total_expenses_request.dart';
+part 'new_expense_request.dart';
+part 'new_expense_response.dart';

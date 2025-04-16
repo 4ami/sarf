@@ -16,8 +16,8 @@ final class RangeTotalExpensesUseCase {
   Future<TotalSpendingsResponse> weeklyExpenses({required String token}) async {
     DateTime date = DateTime.now();
     TotalExpensesRequest request = TotalExpensesRequest(
-      fromDate: _formatDate(date),
-      toDate: _formatDate(date.subtract(const Duration(days: 7))),
+      fromDate: _formatDate(date.subtract(const Duration(days: 7))),
+      toDate: _formatDate(date),
     );
 
     return await _repo.weeklyExpenses(request: request, token: token);

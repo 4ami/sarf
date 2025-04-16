@@ -43,5 +43,27 @@
     "dashboard_budget_spending_title": "ميزانيتك وين صرفتها؟",
     "add_expense_field_label": "كم صرفت؟",
     "add_new_expense_button": "اضف",
-    "log_out_button": "خروج"
+    "log_out_button": "خروج",
+    "currency_name": "ريال",
+    "invalid_expense_input": "القيمة المدخلة غير صحيحة، يرجى التأكد من إدخال المبلغ بالصورة الصحيحة",
+    "positive_expense_required": "نحن نفهم أن هذه مصروفات، لكن لا حاجة لإدخالها بالقيمة السالبة",
+    "expense_number_violation": "المصروفات يجب أن تكون قيمة رقمية، لأنها تعبّر عن مبلغ من المال",
+    "add_expense_success_title": "تمت إضافة المصروف بنجاح",
+    "add_expense_success_description": "يمكنك الآن متابعة مصروفاتك من خلال لوحة التحكم",
+    "choose_spending_category": "وين صرفتها؟",
+    "budget_form_title": "حدد ميزانيتك الشهرية",
+    "save_budget_button": "حفظ الميزانية",
+    "budget_saved_title": "تم حفظ الميزانية بنجاح",
+    "budget_saved_description": "الآن تقدر تشوف نسبة صرفك بالضبط",
+    "budget_field_label": "كم ميزانيتك؟",
+    "user_current_budget_label": "ميزانيتك الحالية",
+    "warning_80_notification_label": "طارت فلوسك 💸",
+    "warning_80_notification_pre_description": "قاعد تصرف كثير على",
+    "warning_80_notification_post_description": "تجاوزت ٨٠٪ من ميزانيتك!",
+    "good_80_notification_label":"فلوسك في مكانها الصح ✅",
+    "good_80_notification_pre_description": "ارتفع صرفك على",
+    "good_80_notification_post_description": "وتجاوز ٨٠٪ من الميزانية، استمر بهالشي الجميل",
+    "error_404_page_title": "ضيعت؟",
+    "error_404_page_description": "شكل الصفحة اللي تدور عليها ما لها وجود.",
+    "return_back_home_button_label": "رجعني للرئيسية"
 }

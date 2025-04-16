@@ -12,8 +12,8 @@ final class TotalSpendingsResponse extends BaseResponse {
   factory TotalSpendingsResponse.fromJSON(obj) {
     List<dynamic> spendings = obj['expenses'] ?? [];
     return TotalSpendingsResponse(
-      code: obj['code'],
-      message: obj['message'],
+      code: obj['code'] ?? -1,
+      message: obj['message'] ?? '',
       totalSpendings: List.generate(
         spendings.length,
         (i) => CategoryTotalSpending.fromJSON(spendings[i]),

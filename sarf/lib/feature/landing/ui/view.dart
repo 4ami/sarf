@@ -29,14 +29,6 @@ class _LandingState extends State<Landing> {
           ),
         ),
       ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          RangeTotalExpensesUseCase useCase = RangeTotalExpensesUseCase();
-          var res = await useCase.weeklyExpenses(token: 'token');
-          print(res.code);
-        },
-      ),
     );
   }
 }

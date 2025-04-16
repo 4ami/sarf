@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:sarf/feature/auth/auth_lib.dart';
+import 'package:sarf/feature/error/view.dart';
 import 'package:sarf/feature/expenses/bloc/bloc.dart';
 import 'package:sarf/feature/expenses/expenses_lib.dart';
 import 'package:sarf/feature/landing/landing.dart';
 import 'package:sarf/local/local_storage.dart';
-import 'package:sarf/utility/widgets/shared_widgets.dart';
 
 part '_routes/_base_route.dart';
 part '_routes/_landing.dart';
@@ -42,7 +42,7 @@ class AppRouter {
     return GoRouter(
       initialLocation: ApplicationPaths.landing.path,
       errorPageBuilder: (context, state) {
-        return MaterialPage(child: GradientScaffold());
+        return MaterialPage(child: ErrorPage());
       },
       redirect: _redirect,
       routes: [

@@ -44,6 +44,27 @@ class _ExpensesHomeState extends State<ExpensesHome> {
               return;
             }
 
+            if (state.event is StoreBudgetBending) {
+              context.showLoader();
+              return;
+            }
+
+            if (state.event is StoreBudgetSuccess) {
+              context.loaderDispose();
+              return;
+            }
+
+            if (state.event is ExpenseAddedSuccessfully) {
+              context.loaderDispose();
+              context.successToast(
+                title: context.translate(key: 'add_expense_success_title'),
+                description: context.translate(
+                  key: 'add_expense_success_description',
+                ),
+              );
+              return;
+            }
+
             if (state.event is FailedSpendingService) {
               context.loaderDispose();
               context.errorToast(
@@ -74,11 +95,14 @@ class _ExpensesHomeState extends State<ExpensesHome> {
             ),
 
             Expanded(
-              child: PageView(
+              child: PageView.builder(
+                itemBuilder: (context, i) {
+                  return views[i];
+                },
                 scrollDirection: Axis.vertical,
                 controller: _pageController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [_Dashboard(), Budget()],
+                itemCount: views.length,
               ),
             ),
           ],
@@ -86,6 +110,8 @@ class _ExpensesHomeState extends State<ExpensesHome> {
       ),
     );
   }
+
+  List<Widget> views = const [Budget(), _Dashboard()];
 
   @override
   void dispose() {

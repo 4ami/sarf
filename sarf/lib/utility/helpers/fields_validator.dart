@@ -69,4 +69,21 @@ final class FieldsValidator {
 
     return null;
   }
+
+  static String? expenseField(String? v, BuildContext c) {
+    if (v == null || v.isEmpty) return c.translate(key: 'required_field');
+
+    if (double.tryParse(v) == null) {
+      return c.translate(key: 'expense_number_violation');
+    }
+
+    final sp = RegExp(r'[!@#\$%^&*()_+\-=\[\]{};:"\\|,.<>\/?`~]');
+    if (sp.hasMatch(v)) return c.translate(key: 'invalid_expense_input');
+
+    if (double.parse(v) < 0) {
+      return c.translate(key: 'positive_expense_required');
+    }
+
+    return null;
+  }
 }

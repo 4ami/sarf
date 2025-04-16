@@ -40,7 +40,7 @@ class _ButtonState extends State<_Button> {
       onPressed: widget.onPressed,
       child: Text(
         context.translate(key: widget.labelKey),
-        style: context.h5!.copyWith(color: Colors.white),
+        style: context.titleLarge!.copyWith(color: Colors.white),
       ),
     );
   }

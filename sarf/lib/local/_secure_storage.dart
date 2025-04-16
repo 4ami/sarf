@@ -19,4 +19,23 @@ class SS {
   Future<void> delete({required String key}) async {
     await _ss.delete(key: key);
   }
+
+  Future<bool> isStored({required String key}) async {
+    String? value = await _ss.read(key: key);
+    return !(value == null) && (value.isNotEmpty);
+  }
+
+  Future<void> writeBudget({required double budget}) async {
+    print('write: $budget');
+    await _ss.write(key: 'budget', value: budget.toString());
+  }
+
+  Future<double> readBudget() async {
+    String? budget = await _ss.read(key: 'budget');
+    if (budget == null) return 0;
+
+    if (double.tryParse(budget) == null) return 0;
+
+    return double.parse(budget);
+  }
 }

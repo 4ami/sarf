@@ -5,15 +5,18 @@ class _TopSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      alignment: WrapAlignment.center,
-      direction: Axis.horizontal,
-      spacing: 200,
-      children: [
-        NameWithSlogan(),
-        Image.asset(AppAssets.assets.walletImage, width: 200),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        direction: Axis.horizontal,
+        spacing: 200,
+        children: [
+          NameWithSlogan(),
+          Image.asset(AppAssets.assets.walletImage, width: 200),
+        ],
+      ),
     );
   }
 }

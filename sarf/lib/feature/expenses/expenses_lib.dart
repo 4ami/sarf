@@ -1,6 +1,5 @@
 library;
 
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -12,6 +11,7 @@ import 'package:sarf/feature/auth/auth_lib.dart';
 import 'package:sarf/feature/budget/budget_lib.dart';
 import 'package:sarf/feature/expenses/bloc/bloc.dart';
 import 'package:sarf/feature/expenses/business/models/models.dart';
+import 'package:sarf/feature/landing/landing.dart';
 import 'package:sarf/utility/extensions/extensions_lib.dart';
 import 'package:sarf/utility/helpers/helpers_lib.dart';
 import 'package:sarf/utility/widgets/shared_widgets.dart';
@@ -25,3 +25,4 @@ part 'ui/widgets/_dashboard.dart';
 part 'ui/widgets/_info_card.dart';
 part 'ui/widgets/_spending_pie.dart';
 part 'ui/widgets/_pie_badge.dart';
+part 'ui/widgets/_new_expense.dart';

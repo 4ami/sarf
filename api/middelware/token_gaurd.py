@@ -9,17 +9,13 @@ class TokenGaurdMiddleware(BaseHTTPMiddleware):
         self.protected=protected
     
     async def dispatch(self, request, call_next):
+        if request.method == "OPTIONS":
+            return await call_next(request)
+        
         if not request.url.path in self.protected:
             return await call_next(request)
-        
-        if request.method == "OPTION":
-            return await call_next(request)
-        
-        print('Method is: ' ,request.method)
-    
+            
         access_token:str = request.headers.get('Authorization')
-
-        print(request.headers)
 
         if not access_token:
             return JSONResponse(

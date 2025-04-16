@@ -16,7 +16,7 @@ class _ExpensesSideBar extends StatefulWidget {
 }
 
 class __ExpensesSideBarState extends State<_ExpensesSideBar> {
-  bool isExpanded = true;
+  bool isExpanded = false;
   void toggleSidebar() {
     setState(() {
       isExpanded = !isExpanded;
@@ -29,28 +29,28 @@ class __ExpensesSideBarState extends State<_ExpensesSideBar> {
       SidebarItem(
         index: 0,
         icon: Image.asset(
-          AppAssets.assets.dashboardIcon,
+          AppAssets.assets.budgetIcon,
           width: 25,
           color:
               widget.selectedIndex == 0 ? context.onSecondaryContainer : null,
         ),
-        label: 'dashboard_side_bar_label',
+        label: 'budget_side_bar_label',
         onTap: () => widget.onTap(0),
       ),
       SidebarItem(
         index: 1,
         icon: Image.asset(
-          AppAssets.assets.budgetIcon,
+          AppAssets.assets.dashboardIcon,
           width: 25,
           color:
               widget.selectedIndex == 1 ? context.onSecondaryContainer : null,
         ),
-        label: 'budget_side_bar_label',
+        label: 'dashboard_side_bar_label',
         onTap: () => widget.onTap(1),
       ),
       SidebarItem(
         index: 2,
-        icon: Icon(Icons.exit_to_app_rounded),
+        icon: Icon(Icons.exit_to_app_rounded, color: context.secondaryFixedDim),
         label: 'log_out_button',
         onTap: () => context.read<AuthBloc>().add(const Logout()),
       ),

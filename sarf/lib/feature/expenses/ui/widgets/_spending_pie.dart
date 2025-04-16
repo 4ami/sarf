@@ -37,33 +37,33 @@ class __SpendingPieState extends State<_SpendingPie> {
                           : _buildSections(),
                 ),
               ),
-
-              Center(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 10),
-                  child: Transform.rotate(
-                    angle: -.30,
-                    child: Container(
-                      padding: EdgeInsets.only(
-                        left: 10,
-                        right: 10,
-                        top: 25,
-                        bottom: 25,
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.surfaceContainerHigh.withValues(
-                          alpha: .5,
+              if (state.weeklyExpenses.isEmpty)
+                Center(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 10),
+                    child: Transform.rotate(
+                      angle: -.30,
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          left: 10,
+                          right: 10,
+                          top: 25,
+                          bottom: 25,
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        context.translate(key: 'track_your_expenses_message'),
-                        textAlign: TextAlign.center,
+                        decoration: BoxDecoration(
+                          color: context.surfaceContainerHigh.withValues(
+                            alpha: .5,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          context.translate(key: 'track_your_expenses_message'),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
@@ -131,11 +131,6 @@ class __SpendingPieState extends State<_SpendingPie> {
     SpendingState state = context.read<SpendingsBloc>().state;
     List<Category> categories = state.categories;
 
-    var randoms = List.generate(
-      categories.length,
-      (i) => Random().nextDouble(),
-    );
-
     return List.generate(categories.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 20.0 : 16.0;
@@ -153,7 +148,7 @@ class __SpendingPieState extends State<_SpendingPie> {
 
       return PieChartSectionData(
         color: colors[i],
-        value: randoms[i],
+        value: state.weeklyExpenses[i].total,
         title: context.translate(key: categories[i].labelKey),
         radius: radius,
         titleStyle: context.titleLarge!.copyWith(

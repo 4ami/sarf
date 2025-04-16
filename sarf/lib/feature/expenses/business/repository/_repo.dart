@@ -8,6 +8,11 @@ abstract interface class SpendingRepo {
     required TotalExpensesRequest request,
     required String token,
   });
+
+  Future<NewExpenseResponse> addExpense({
+    required NewExpenseRequest request,
+    required String token,
+  });
 }
 
 final class SpendingsServices extends SpendingRepo {
@@ -33,6 +38,19 @@ final class SpendingsServices extends SpendingRepo {
       body: request,
       endpoint: CloudSource.expenseRange,
       parser: (res) => TotalSpendingsResponse.fromJSON(res),
+      headers: {'Authorization': 'Bearer $token'},
+    );
+  }
+
+  @override
+  Future<NewExpenseResponse> addExpense({
+    required NewExpenseRequest request,
+    required String token,
+  }) async {
+    return await _client.post(
+      body: request,
+      endpoint: CloudSource.addExpense,
+      parser: (res) => NewExpenseResponse.fromJSON(res),
       headers: {'Authorization': 'Bearer $token'},
     );
   }

@@ -23,4 +23,45 @@ extension CustomToasts on BuildContext {
       icon: Icon(Icons.error_rounded),
     );
   }
+
+  ToastificationItem successToast({
+    required String title,
+    required String description,
+  }) {
+    return toastification.show(
+      autoCloseDuration: const Duration(seconds: 5),
+      context: this,
+      title: Text(
+        title,
+        style: titleMedium!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Colors.green,
+        ),
+      ),
+      description: Text(description),
+      style: ToastificationStyle.flatColored,
+    );
+  }
+
+  ToastificationItem warningToast({
+    required String title,
+    required String description,
+    required String categoryIcon,
+  }) {
+    return toastification.show(
+      autoCloseDuration: const Duration(seconds: 5),
+      context: this,
+      title: Text(
+        title,
+        style: titleMedium!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Colors.deepOrangeAccent,
+        ),
+      ),
+      description: Text(description),
+      primaryColor: Colors.deepOrangeAccent,
+      style: ToastificationStyle.flatColored,
+      icon: Image.asset(categoryIcon, color: Colors.deepOrangeAccent),
+    );
+  }
 }

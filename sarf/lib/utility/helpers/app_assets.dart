@@ -8,6 +8,7 @@ class AppAssets {
 
   String get logoIcon => 'assets/icons/logo.png';
   String get walletImage => 'assets/images/wallet.png';
+  String get error404 => 'assets/images/error404.png';
   String get increaseBudget => 'assets/images/Increase.png';
   String get moneyBag => 'assets/images/money_bag.png';
   String get dashboardIcon => 'assets/icons/dashboard.png';

@@ -15,7 +15,7 @@ final class HttpClient {
   }
 
   Uri _buildURI(String endpoint, [Map<String, dynamic>? queryParams]) {
-    return Uri.http(_host, endpoint, queryParams);
+    return Uri.https(_host, endpoint, queryParams);
   }
 
   Map<String, String> _setHeaders(Map<String, String>? clientHeaders) {
@@ -28,7 +28,6 @@ final class HttpClient {
     required T Function(dynamic json) parser,
     Map<String, String>? headers,
   }) async {
-    print(_setHeaders(headers));
     final Uri uri = _buildURI(endpoint);
     http.Response response = await http.post(
       uri,

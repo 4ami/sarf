@@ -28,6 +28,14 @@ final class _ExpensesRoute extends _BaseRoute {
 
   @override
   Future<String?> redirect(BuildContext context, GoRouterState state) async {
-    return null;
+    return await _checkAuthenticity() ? null : ApplicationPaths.login.path;
+  }
+
+  Future<bool> _checkAuthenticity() async {
+    String? token = await SS.instance.read('token');
+    if (token == null || token.isEmpty) return false;
+    if (JwtDecoder.tryDecode(token) == null) return false;
+    if (JwtDecoder.isExpired(token)) return false;
+    return true;
   }
 }

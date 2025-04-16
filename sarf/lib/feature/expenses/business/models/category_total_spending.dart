@@ -10,4 +10,8 @@ final class CategoryTotalSpending {
       total: obj['total'],
     );
   }
+
+  CategoryTotalSpending copyWith(double amount){
+    return CategoryTotalSpending(category: category, total: (total+amount));
+  }
 }

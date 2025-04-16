@@ -42,7 +42,7 @@ flutter:
 fonts:
   - family: AR
     fonts:
-      - asset: sarf/assets/fonts/ar/IBMPlexSans-Bold.ttf
+      - asset: sarf/assets/fonts/ar/IBMPlexSans-Regular.ttf
       - asset: sarf/assets/fonts/ar/IBMPlexSans-Bold.ttf
         weight: 700
   
