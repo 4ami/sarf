@@ -13,6 +13,7 @@ class _NewExpenseFormState extends State<_NewExpenseForm> {
   double amount = 0;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
     return Form(
       key: _formKey,
       child: Column(
@@ -25,12 +26,13 @@ class _NewExpenseFormState extends State<_NewExpenseForm> {
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: 25,
-              runSpacing: 25,
+              runSpacing: 35,
               runAlignment: WrapAlignment.center,
               alignment: WrapAlignment.center,
               children: [
                 CustomField(
-                  labelKey: context.translate(key: 'add_expense_field_label'),
+                  width: width <= 700 ? 250 : null,
+                  labelKey: 'add_expense_field_label',
                   validator: FieldsValidator.expenseField,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   onChanged: (p0) {
@@ -41,7 +43,6 @@ class _NewExpenseFormState extends State<_NewExpenseForm> {
                     });
                   },
                 ),
-                const SizedBox(width: 10),
 
                 SizedBox(
                   width: 250,

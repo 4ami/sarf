@@ -33,11 +33,14 @@ class __FormContainerState extends State<_FormContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       padding: EdgeInsets.all(50),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [context.inversePrimary, context.surface],
+          colors: [
+            context.inversePrimary.withValues(alpha: .7),
+            context.surface.withValues(alpha: .7),
+          ],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
         ),
@@ -45,33 +48,35 @@ class __FormContainerState extends State<_FormContainer> {
       ),
       child: Form(
         key: _form,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              context.translate(key: 'sign_in_form_title'),
-              style: context.h3,
-            ),
-            SizedBox(height: 50),
-            CustomField.email(
-              onChanged: (p0) {
-                context.read<AuthBloc>().add(EmailChanged(email: p0 ?? ''));
-              },
-            ),
-            SizedBox(height: 40),
-            CustomField.password(
-              onChanged: (p0) {
-                context.read<AuthBloc>().add(
-                  PasswordChanged(password: p0 ?? ''),
-                );
-              },
-            ),
-            SizedBox(height: 80),
-            _Button.login(onPressed: _loginButton),
-            SizedBox(height: 30),
-            _Button.createAccount(onPressed: _createButton),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                context.translate(key: 'sign_in_form_title'),
+                style: context.h3,
+              ),
+              SizedBox(height: 50),
+              CustomField.email(
+                onChanged: (p0) {
+                  context.read<AuthBloc>().add(EmailChanged(email: p0 ?? ''));
+                },
+              ),
+              SizedBox(height: 40),
+              CustomField.password(
+                onChanged: (p0) {
+                  context.read<AuthBloc>().add(
+                    PasswordChanged(password: p0 ?? ''),
+                  );
+                },
+              ),
+              SizedBox(height: 80),
+              _Button.login(onPressed: _loginButton),
+              SizedBox(height: 30),
+              _Button.createAccount(onPressed: _createButton),
+            ],
+          ),
         ),
       ),
     );

@@ -17,7 +17,10 @@ class __SetBudgetContainerState extends State<_SetBudgetContainer> {
         padding: EdgeInsets.all(50),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [context.inversePrimary, context.surface],
+            colors: [
+              context.inversePrimary.withValues(alpha: .4),
+              context.surface.withValues(alpha: .4),
+            ],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
           ),
@@ -29,7 +32,7 @@ class __SetBudgetContainerState extends State<_SetBudgetContainer> {
             children: [
               Text(
                 context.translate(key: 'budget_form_title'),
-                style: context.h3,
+                style: context.titleMedium,
               ),
               SizedBox(height: 50),
               CustomField(

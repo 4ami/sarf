@@ -26,3 +26,4 @@ part 'ui/widgets/_info_card.dart';
 part 'ui/widgets/_spending_pie.dart';
 part 'ui/widgets/_pie_badge.dart';
 part 'ui/widgets/_new_expense.dart';
+part 'ui/widgets/_bottom_nav.dart';

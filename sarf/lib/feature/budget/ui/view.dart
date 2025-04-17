@@ -16,7 +16,10 @@ class _BudgetState extends State<Budget> {
         primary: true,
         leading: Image.asset(AppAssets.assets.logoIcon),
         leadingWidth: 100,
-        title: Text(context.translate(key: "app_name"), style: context.h3),
+        title: Text(
+          context.translate(key: "app_name"),
+          style: width > 700 ? context.h3 : context.titleSmall,
+        ),
         actions: [LanguageSwitcher(), ThemeSwitcher()],
         forceMaterialTransparency: true,
         toolbarHeight: 150,
@@ -41,15 +44,18 @@ class _BudgetState extends State<Budget> {
               child: Image.asset(AppAssets.assets.moneyBag, scale: 4),
             ),
           ),
-          Column(
-            children: [
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 12, sigmaY: 6),
-                child: _CurrentBudget(),
-              ),
-            ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 12, sigmaY: 6),
+                  child: _CurrentBudget(),
+                ),
+                const SizedBox(height: 50),
+                _SetBudgetContainer(),
+              ],
+            ),
           ),
-          _SetBudgetContainer(),
         ],
       ),
     );

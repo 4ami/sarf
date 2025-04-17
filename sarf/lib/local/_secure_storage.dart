@@ -26,7 +26,6 @@ class SS {
   }
 
   Future<void> writeBudget({required double budget}) async {
-    print('write: $budget');
     await _ss.write(key: 'budget', value: budget.toString());
   }
 

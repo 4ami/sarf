@@ -29,11 +29,9 @@ final class HttpClient {
     Map<String, String>? headers,
   }) async {
     final Uri uri = _buildURI(endpoint);
-    http.Response response = await http.post(
-      uri,
-      body: body.encoded,
-      headers: _setHeaders(headers),
-    );
+    http.Response response = await http
+        .post(uri, body: body.encoded, headers: _setHeaders(headers))
+        .timeout(const Duration(seconds: 10), onTimeout: () => throw 'Timeout');
 
     Map<String, dynamic> jsonBody = jsonDecode(response.body);
     if (response.statusCode == 422) {
@@ -51,11 +49,9 @@ final class HttpClient {
     Map<String, String>? headers,
   }) async {
     final Uri uri = _buildURI(endpoint);
-    http.Response response = await http.put(
-      uri,
-      body: body.encoded,
-      headers: _setHeaders(headers),
-    );
+    http.Response response = await http
+        .put(uri, body: body.encoded, headers: _setHeaders(headers))
+        .timeout(const Duration(seconds: 10), onTimeout: () => throw 'Timeout');
     Map<String, dynamic> jsonBody = jsonDecode(response.body);
 
     if (response.statusCode == 422) {
@@ -72,11 +68,9 @@ final class HttpClient {
     Map<String, String>? headers,
   }) async {
     final Uri uri = _buildURI(endpoint);
-    http.Response response = await http.delete(
-      uri,
-      body: body.encoded,
-      headers: _setHeaders(headers),
-    );
+    http.Response response = await http
+        .delete(uri, body: body.encoded, headers: _setHeaders(headers))
+        .timeout(const Duration(seconds: 10), onTimeout: () => throw 'Timeout');
     Map<String, dynamic> jsonBody = jsonDecode(response.body);
 
     if (response.statusCode == 422) {
@@ -103,7 +97,9 @@ final class HttpClient {
     }
 
     final Uri uri = _buildURI(endpoint, queryParams);
-    http.Response response = await http.get(uri, headers: _setHeaders(headers));
+    http.Response response = await http
+        .get(uri, headers: _setHeaders(headers))
+        .timeout(const Duration(seconds: 10), onTimeout: () => throw 'Timeout');
     Map<String, dynamic> jsonBody = jsonDecode(response.body);
 
     if (response.statusCode == 422) {

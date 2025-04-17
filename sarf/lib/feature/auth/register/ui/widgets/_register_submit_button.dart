@@ -29,12 +29,15 @@ class _RegisterSubmitButton extends StatefulWidget {
 class __RegisterSubmitButtonState extends State<_RegisterSubmitButton> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: widget.style?.call(context) ?? _buttonStyle,
-      onPressed: widget.onPressed,
-      child: Text(
-        context.translate(key: widget.labelKey),
-        style: context.h5!.copyWith(color: Colors.white),
+    return SizedBox(
+      width: 350,
+      child: ElevatedButton(
+        style: widget.style?.call(context) ?? _buttonStyle,
+        onPressed: widget.onPressed,
+        child: Text(
+          context.translate(key: widget.labelKey),
+          style: context.titleMedium!.copyWith(color: Colors.white),
+        ),
       ),
     );
   }
@@ -47,5 +50,4 @@ final ButtonStyle _buttonStyle = ButtonStyle(
   shape: WidgetStatePropertyAll(
     RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
   ),
-  fixedSize: WidgetStatePropertyAll(Size(350, 60)),
 );

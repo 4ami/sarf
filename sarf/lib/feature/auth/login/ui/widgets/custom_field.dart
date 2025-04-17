@@ -25,7 +25,7 @@ class CustomField extends StatefulWidget {
     this.obsecure = false,
     this.direction,
     this.hintDirection,
-    this.keyboardType
+    this.keyboardType,
   });
 
   final double? width, height;
@@ -79,7 +79,10 @@ class CustomField extends StatefulWidget {
     );
   }
 
-  factory CustomField.email({void Function(String?)? onChanged, TextInputType? keyboardType}) {
+  factory CustomField.email({
+    void Function(String?)? onChanged,
+    TextInputType? keyboardType,
+  }) {
     return CustomField._(
       labelKey: 'email_field_label',
       hint: 'email@sarf.com',
@@ -110,6 +113,7 @@ class CustomField extends StatefulWidget {
 class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
     return SizedBox(
       width: widget.width ?? 360,
       height: widget.height,
@@ -127,7 +131,11 @@ class _CustomFieldState extends State<CustomField> {
           labelStyle: context.titleLarge,
           border: _border,
           enabledBorder: _border,
-          label: Text(context.translate(key: widget.labelKey)),
+          label: Text(
+            context.translate(key: widget.labelKey),
+            style:
+                width <= 700 ? context.bodySmall!.copyWith(fontSize: 16) : null,
+          ),
           hintText: widget.hint,
           hintTextDirection: widget.hintDirection,
         ),

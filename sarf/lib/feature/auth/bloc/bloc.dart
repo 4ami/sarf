@@ -121,6 +121,7 @@ final class AuthBloc extends Bloc<AuthEvent, AuthState> {
         password: loginState.password,
       );
 
+      print('send request');
       LoginResponse? response = await useCase
           .execute(req: request)
           .then(handleThen)

@@ -30,6 +30,7 @@ class _ExpensesHomeState extends State<ExpensesHome> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
     return MultiBlocListener(
       listeners: [
         BlocListener<SpendingsBloc, SpendingState>(
@@ -88,11 +89,12 @@ class _ExpensesHomeState extends State<ExpensesHome> {
       child: GradientScaffold(
         body: Row(
           children: [
-            _ExpensesSideBar(
-              selectedIndex: index,
-              onPush: _onPush,
-              onTap: _onTap,
-            ),
+            if (width > 700)
+              _ExpensesSideBar(
+                selectedIndex: index,
+                onPush: _onPush,
+                onTap: _onTap,
+              ),
 
             Expanded(
               child: PageView.builder(
@@ -107,6 +109,14 @@ class _ExpensesHomeState extends State<ExpensesHome> {
             ),
           ],
         ),
+        bottomNavigationBar:
+            width <= 700
+                ? _ExpensesBottomNavBar(
+                  selectedIndex: index,
+                  onTap: _onTap,
+                  onPush: _onPush,
+                )
+                : null,
       ),
     );
   }

@@ -33,65 +33,74 @@ class __RegisterFormContainerState extends State<_RegisterFormContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      padding: EdgeInsets.all(40),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [context.inversePrimary, context.surface],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
+    return SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.all(40),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              context.inversePrimary.withValues(alpha: .7),
+              context.surface.withValues(alpha: .7),
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Form(
-        key: _form,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              context.translate(key: 'register_form_title'),
-              style: context.h3,
-            ),
-            SizedBox(height: 40),
-            CustomField.fullName(
-              context,
-              onChanged: (name) {
-                context.read<AuthBloc>().add(NameChanged(fullName: name ?? ''));
-              },
-            ),
-            SizedBox(height: 30),
-            CustomField.email(
-              onChanged: (email) {
-                context.read<AuthBloc>().add(EmailChanged(email: email ?? ''));
-              },
-            ),
-            SizedBox(height: 30),
-            CustomField.password(
-              onChanged: (password) {
-                context.read<AuthBloc>().add(
-                  PasswordChanged(password: password ?? ''),
-                );
-              },
-            ),
-            SizedBox(height: 30),
-            CustomField.password(
-              labelKey: 'confirm_password_label',
-              validator: FieldsValidator.confirmPassword,
-              onChanged: (confirmPassword) {
-                context.read<AuthBloc>().add(
-                  ConfirmPasswordChanged(password: confirmPassword ?? ''),
-                );
-              },
-            ),
-            SizedBox(height: 50),
-            _RegisterSubmitButton.build(onPressed: registerButton),
-            SizedBox(height: 20),
-            TextButton(
-              onPressed: goLoginButton,
-              child: Text(context.translate(key: 'already_have_account')),
-            ),
-          ],
+        child: Form(
+          key: _form,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                context.translate(key: 'register_form_title'),
+                style: context.h3,
+              ),
+              SizedBox(height: 40),
+              CustomField.fullName(
+                context,
+                onChanged: (name) {
+                  context.read<AuthBloc>().add(
+                    NameChanged(fullName: name ?? ''),
+                  );
+                },
+              ),
+              SizedBox(height: 30),
+              CustomField.email(
+                onChanged: (email) {
+                  context.read<AuthBloc>().add(
+                    EmailChanged(email: email ?? ''),
+                  );
+                },
+              ),
+              SizedBox(height: 30),
+              CustomField.password(
+                onChanged: (password) {
+                  context.read<AuthBloc>().add(
+                    PasswordChanged(password: password ?? ''),
+                  );
+                },
+              ),
+              SizedBox(height: 30),
+              CustomField.password(
+                labelKey: 'confirm_password_label',
+                validator: FieldsValidator.confirmPassword,
+                onChanged: (confirmPassword) {
+                  context.read<AuthBloc>().add(
+                    ConfirmPasswordChanged(password: confirmPassword ?? ''),
+                  );
+                },
+              ),
+              SizedBox(height: 50),
+              _RegisterSubmitButton.build(onPressed: registerButton),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: goLoginButton,
+                child: Text(context.translate(key: 'already_have_account')),
+              ),
+            ],
+          ),
         ),
       ),
     );

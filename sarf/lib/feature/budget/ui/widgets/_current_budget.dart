@@ -13,7 +13,10 @@ class _CurrentBudget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [context.inversePrimary, context.surface],
+          colors: [
+            context.surface.withValues(alpha: .6),
+            context.inversePrimary.withValues(alpha: .6),
+          ],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
         ),
@@ -21,7 +24,7 @@ class _CurrentBudget extends StatelessWidget {
       ),
       child: Text(
         '$label: ${budget.toStringAsFixed(2)} $currency',
-        style: context.h3,
+        style: context.titleMedium,
         textAlign: TextAlign.center,
       ),
     );

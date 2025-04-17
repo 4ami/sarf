@@ -21,7 +21,7 @@ class __DashboardState extends State<_Dashboard> {
   @override
   Widget build(BuildContext context) {
     SpendingState state = context.watch<SpendingsBloc>().state;
-
+    double width = MediaQuery.sizeOf(context).width;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_hasShown) return;
       for (int i = 0; i < state.categories.length; i++) {
@@ -81,7 +81,10 @@ class __DashboardState extends State<_Dashboard> {
         primary: true,
         leading: Image.asset(AppAssets.assets.logoIcon),
         leadingWidth: 100,
-        title: Text(context.translate(key: "app_name"), style: context.h3),
+        title: Text(
+          context.translate(key: "app_name"),
+          style: width > 700 ? context.h3 : context.titleSmall,
+        ),
         actions: [LanguageSwitcher(), ThemeSwitcher()],
         forceMaterialTransparency: true,
         toolbarHeight: 150,
@@ -95,10 +98,12 @@ class __DashboardState extends State<_Dashboard> {
                 Center(
                   child: SizedBox(
                     height: MediaQuery.sizeOf(context).height * .5,
+                    width: width * .2,
                     child: _SpendingPie(),
                   ),
                 ),
 
+              const SizedBox(height: 50),
               //New expense
               Center(child: _NewExpenseForm()),
               const SizedBox(height: 50),
@@ -106,7 +111,7 @@ class __DashboardState extends State<_Dashboard> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   context.translate(key: 'dashboard_budget_spending_title'),
-                  style: context.h3,
+                  style: width <= 700 ? context.titleLarge : context.h3,
                 ),
               ),
               if (state.categories.isNotEmpty)

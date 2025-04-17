@@ -20,7 +20,6 @@ final class SpendingsBloc extends Bloc<SpendingsEvent, SpendingState> {
   }
 
   String _getError(dynamic error) {
-    print(error.toString());
     if (error is ClientException) return 'System Backend offline!';
     if (error is Exception) return error.toString();
     if (error is String) return error;
@@ -42,7 +41,6 @@ final class SpendingsBloc extends Bloc<SpendingsEvent, SpendingState> {
       if (stored) {
         double budget = await SS.instance.readBudget();
         emit(state.copyWith(budget: budget));
-        print('Budget: $budget');
       }
 
       String? token = await SS.instance.read('token');

@@ -12,10 +12,15 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
+    bool errorAppear = false;
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.event is PendingAuthService) {
           context.showLoader();
+          setState(() {
+            errorAppear = false;
+          });
           return;
         }
 
@@ -27,10 +32,15 @@ class _RegisterState extends State<Register> {
 
         if (state.event is FailedAuthService) {
           context.loaderDispose();
-          context.errorToast(
-            title: context.translate(key: 'error_notification_title'),
-            description: state.event.message,
-          );
+          if (!errorAppear) {
+            context.errorToast(
+              title: context.translate(key: 'error_notification_title'),
+              description: state.event.message,
+            );
+            setState(() {
+              errorAppear = true;
+            });
+          }
           return;
         }
       },

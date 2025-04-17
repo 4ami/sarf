@@ -8,6 +8,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool errorAppear = false;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
@@ -16,6 +17,9 @@ class _LoginState extends State<Login> {
       listener: (context, state) {
         if (state.event is PendingAuthService) {
           context.showLoader();
+          setState(() {
+            errorAppear = false;
+          });
           return;
         }
 
@@ -26,10 +30,15 @@ class _LoginState extends State<Login> {
         }
         if (state.event is FailedAuthService) {
           context.loaderDispose();
-          context.errorToast(
-            title: context.translate(key: 'error_notification_title'),
-            description: state.event.message,
-          );
+          if (!errorAppear) {
+            context.errorToast(
+              title: context.translate(key: 'error_notification_title'),
+              description: state.event.message,
+            );
+            setState(() {
+              errorAppear = true;
+            });
+          }
           return;
         }
       },
